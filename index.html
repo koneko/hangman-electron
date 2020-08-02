@@ -10,7 +10,7 @@
       margin: 0px;
       background-color: lightgray;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      font-size: 30px;
+      font-size: 20px;
       width: 100%;
       height: 100%;
       position: absolute;
@@ -19,7 +19,7 @@
     #main {
       display: flex;
       height: 100%;
-      width: 100%; 
+      width: 100%;
       flex-direction: column;
     }
 
@@ -29,11 +29,12 @@
       font-weight: bold;
       text-align: center;
       padding: 5px;
-      font-size: 60px;
+      font-size: 2em;
     }
 
     #content {
       flex-grow: 1;
+      height: 100%;
     }
 
     #footer {
@@ -44,13 +45,13 @@
       padding: 5px;
     }
 
-    button {
+    .menuButton {
       border: 1px solid black;
       border-radius: 4px;
       background-color: teal;
       color: white;
       padding: 4px;
-      font-size: inherit;
+      font-size: 2em;
       cursor: pointer;
       margin-top: 15px;
       min-width: 250px;
@@ -64,6 +65,27 @@
       justify-content: center;
     }
 
+    #contentGame {
+      height: 100%;
+      display: flex;
+      justify-items: stretch;
+      align-items: stretch;
+    }
+
+    #svgHangman {
+      top: 20px;
+      left: 20px;
+    }
+
+    #wordToGuess {
+      top: 20px;
+      left: 520px;
+    }
+
+    input,
+    button {
+      font-size: 1.3em;
+    }
   </style>
 </head>
 
@@ -74,11 +96,60 @@
     </div>
     <div id="content">
       <div id="contentMenu">
-        <button onclick="newGame()">New game</button>
-        <button onclick="quitGame()">Quit game</button>
+        <button class="menuButton" onclick="newGame()">New game</button>
+        <button class="menuButton" onclick="quitGame()">Quit game</button>
       </div>
 
-      <div id="contentGame" style="display: none;">
+      <div id="contentGame" style="display: none; ">
+        <div>
+          <svg id="svgHangman" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="500px" height="700px"
+            version="1.1" shape-rendering="geometricPrecision" text-rendering="geometricPrecision"
+            image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 600 800"
+            xmlns:xlink="http://www.w3.org/1999/xlink">
+            <g id="Layer_x0020_1">
+              <metadata id="CorelCorpID_0Corel-Layer" />
+              <rect fill="#B3B3B3" x="332" y="76" width="12" height="96" />
+              <rect id="svgGallowsBottom" fill="#C2560E" x="3" y="761" width="594" height="30" />
+              <rect id="svgGallowsLeft" fill="#C2560E" x="24" y="31" width="28.9996" height="736" />
+              <rect fill="#C2560E" x="24" y="31" width="558" height="25.9996" />
+              <rect fill="#C2560E" x="309" y="54" width="58.0004" height="27.9992" />
+              <circle id="svgHead" fill="#FF9999" cx="338" cy="217" r="50" />
+              <rect id="svgTorso" fill="#FF9999" x="315" y="254" width="45.7217" height="237.183" />
+              <rect id="svgLeftArm" fill="#FF9999" transform="matrix(2.64845E-14 1 -1 2.64845E-14 316.316 282.314)"
+                width="25.0004" height="204" />
+              <rect id="svgRightArm" fill="#FF9999" transform="matrix(2.64845E-14 1 -1 2.64845E-14 562.131 282.314)"
+                width="25.0004" height="204" />
+              <rect id="svgLeftLeg" fill="#FF9999" transform="matrix(0.866025 0.5 -0.5 0.866025 321.958 447.485)"
+                width="32.0008" height="214" />
+              <rect id="svgRightLeg" fill="#FF9999" transform="matrix(-0.866025 0.5 0.5 0.866025 350.357 447.335)"
+                width="32.0008" height="214" />
+            </g>
+          </svg>
+        </div>
+        <div
+          style="display: flex; flex-direction: column; align-items: stretch; height: 100%; flex-grow: 1;">
+          <div id="wordToGuess" style="letter-spacing: 5px; margin-top: 50px; font-size:2em; text-align: center; ">
+            ________
+          </div>
+
+          <div style="margin-top: 40px; text-align: center;">
+            <input id="txtGuess" type="text" maxlength="1" style="width: 50px;" />
+            <button id="btnSubmitGuess">Guess</button>
+          </div>
+
+          <div id="guessLog"
+            style="flex-grow: 1; border: 1px solid black; border-radius: 4px; padding: 10px; margin: 30px; height: 100%;">
+            dddqdw
+
+            qwd
+            qw
+            wdq
+            qwd
+          </div>
+
+
+        </div>
+
 
       </div>
 
@@ -95,4 +166,5 @@
   </div>
   <script src="game.js"></script>
 </body>
+
 </html>
